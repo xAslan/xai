@@ -9,7 +9,7 @@ It will create a screen session called xai and pass in the necessary commands
 to the sentry-node cli to start your sentry node and leave in running 
 in a detached state that you can later connect to and verify it is still running
 
-## Process
+## Prereqs
 
 download and unzip the  sentry node cli to a directory like `/home/myname/xai/`
 *instructions can be found at 
@@ -17,22 +17,31 @@ download and unzip the  sentry node cli to a directory like `/home/myname/xai/`
 
 after this your sentry node cli should be at `/home/myname/xai/sentry-node-cli-linux`
 
-copy `start-xai-sentry.sh` to your `/xai/` folder
+## Create the xai startup script
+
+copy `start-xai-sentry.sh` from this repo to your `/xai/` folder
 
 *In this step you enter your private key, so make sure this machine is secure*
-open up the `start-xai-sentry.sh` script
+open up the `start-xai-sentry.sh` script with nano or some editor
 add in your private key
 update the directory where your `sentry-node-cli-linux` script lives
+e.g. edit with `nano /home/myname/xai/start-xai-sentry.sh`
+save and exit the file (Ctrl + o, Enter,  Ctrl + x if using nano)
 
 finally save and exit the file then make the script executable with
 `chmod +x start-xai-sentry.sh`
 
+You can stop here if you just want script to start the xai service.
+The service can be started by executing the start-xai-sentry.sh script
+
+## Create the Service
+
 now copy the service into `/etc/systemd/system/xai-sentry.servce`
 you will probably need to use sudo. You can create the file and copy the contents with
 `sudo nano /etc/systemd/system/xai-sentry.servce`
-paste the contents
+then paste the contents
 update the diretory path and replace `mynamme` with your user
-finally, save and close the file with Ctrl + o, Enter,  Ctrl + x
+finally, save and close the file 
 
 Now everything is in place
 Reload the systemd services with
