@@ -1,0 +1,12 @@
+[Unit]
+Description=Xai Sentry Node Startup Script
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/home/myname/xai/start_xai_sentry.sh
+User=myname
+WorkingDirectory=/home/myname
+
+[Install]
+WantedBy=multi-user.target
